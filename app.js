@@ -1,18 +1,15 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = 3000;
 
-const db = require('./src/db/db')
+const db = require('./src/db/db');
+const todoRouter = require('./src/routes/todo');
 
-const todoRouter = require('./src/routes/todo')
-
+app.use(cors())
+app.use(express.static('public'))
 app.use(express.json()) // puts on req.body
 app.use('/api', todoRouter)
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
 
 const server = app.listen(port, () => {
   console.log(`Example app listening on port ${port}. http://localhost:${port}`)
