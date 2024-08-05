@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+const db = require('./src/db/db')
+
 const todoRouter = require('./src/routes/todo')
 
 app.use(express.json()) // puts on req.body
@@ -12,6 +14,13 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Example app listening on port ${port}. http://localhost:${port}`)
+})
+
+process.on('SIGINT', () => {
+  server.close(() => {
+    console.log('Shutting down the server.')
+    db.close()
+  })
 })
