@@ -1,0 +1,19 @@
+.add-todo {
+    width: 100%;
+}
+
+.add-todo-input {
+    min-height: 30px;
+    width: 400px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #000;
+    padding-left: 25px;
+}
+
+.add-todo-button {
+    min-height: 30px;
+    width: 100px;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #000;
+    border-left: 0;
+}
